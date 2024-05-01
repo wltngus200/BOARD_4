@@ -1,0 +1,49 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.boardver4.board.BoardMapper">
+
+
+    <insert id="boardPost">
+        INSERT INTO board
+        (title, contents, writer_id)
+        VALUES
+        (#{title}, #{contents}, #{writerId})
+    </insert>
+
+    <delete id="boardDelete">
+        DELETE
+        FROM board
+        WHERE board_id=#{boardId}
+
+    </delete>
+
+    <update id="boardPut">
+        UPDATE board
+        <set>
+            <if test="title!=null and title!=''">
+                , title=#{title}
+            </if>
+            <if test="contents!=null and contents!=''">
+                , contents=#{contents}
+            </if>
+        </set>
+        WHERE board_id=#{boardId}
+    </update>
+
+    <select id="boardGetAll">
+        SELECT board_id AS boardId, title, writer_id AS writerId, hits, created_at AS createdAt, updated_at AS updatedAt
+        FROM board
+        ORDER BY boardId DESC
+        LIMIT #{startIdx},#{length}
+    </select>
+
+    <select id="boardGetOne">
+        SELECT A.board_id AS boardId, A.title, A.writer_id AS writerId, B.uid, A.hits, A.created_at AS createdAt, A.updated_at AS updatedAt, A.contents
+        FROM board A
+        INNER JOIN user B
+        ON A.writer_id=B.user_id
+        WHERE A.board_id=#{board_id}
+    </select>
+
+</mapper>

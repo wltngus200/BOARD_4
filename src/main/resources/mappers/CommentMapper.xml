@@ -1,0 +1,18 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.boardver4.comment.CommentMapper">
+
+    <insert id="commentInsert">
+        INSERT INTO comment
+        (contents, writer_id, board_id)
+        VALUES
+        (#{contents}, #{writerId}, #{boardId})
+    </insert>
+
+    <delete id="commentDelete">
+        DELETE
+        FROM comment
+        WHERE comment_id=#{commentId}
+    </delete>
+</mapper>

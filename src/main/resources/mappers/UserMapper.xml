@@ -1,0 +1,31 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.boardver4.user.UserMapper">
+    <insert id="userPost">
+        INSERT INTO user
+        (uid, upw, nm)
+        VALUES
+        (#{uid}, #{upw}, #{nm})
+    </insert>
+
+    <update id="userPut">
+        UPDATE user
+        SET upw=#{newUpw}
+        WHERE uid=#{uid}
+    </update>
+
+    <select id="userPostLogIn">
+        SELECT upw
+        FROM
+        WHERE uid=#{uid}
+    </select>
+
+    <!--아이디가 있는가 로그인과 비밀번호 변경용-->
+    <select id="findUid">
+        SELECT user_id AS userId, uid, upw, nm, created_at AS createdAt, update_at AS updatedAt
+        FROM user
+        WHERE uid=#{uid}
+    </select>
+
+</mapper>
