@@ -22,8 +22,5 @@
         WHERE comment_id=#{commentId}
     </update>
 
-    <select id="commentPut">
-        SELECT
-    </select>
 
 </mapper>
