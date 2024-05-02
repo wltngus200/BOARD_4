@@ -2,6 +2,7 @@ package com.green.boardver4.comment;
 
 import com.green.boardver4.comment.model.CommentDeleteReq;
 import com.green.boardver4.comment.model.CommentPostReq;
+import com.green.boardver4.comment.model.CommentUpdateReq;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +16,8 @@ public class CommentService {
     }
     int commentDelete(CommentDeleteReq p){
         return mapper.commentDelete(p);
+    }
+    int commentPut(CommentUpdateReq p){
+        return mapper.commentPut(p);
     }
 }

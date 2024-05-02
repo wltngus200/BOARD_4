@@ -5,8 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CommentDeleteReq {
+public class CommentUpdateReq {
     private long commentId;
     private long writerId;
-    private long boardId;
+    private String contents;
 }

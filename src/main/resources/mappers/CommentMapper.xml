@@ -15,4 +15,15 @@
         FROM comment
         WHERE comment_id=#{commentId}
     </delete>
+
+    <update id="commentPut">
+        UPDATE comment
+        SET contents=#{contents}
+        WHERE comment_id=#{commentId}
+    </update>
+
+    <select id="commentPut">
+        SELECT
+    </select>
+
 </mapper>
